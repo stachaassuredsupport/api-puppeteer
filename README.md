@@ -137,7 +137,7 @@ Note that in the JavaScript code, the URLs for the Ajax requests are hardcoded t
 </html>
 ```
 
-### Dependencies for Linux
+### Dependencies errors on Linux (and potentially other OS)
 
 You might get a console error, that looks like this: 
 
@@ -202,10 +202,6 @@ sudo apt purge -y libnss3 && sudo apt autoremove
 ### Additional resourses 
 
 * Blog post how to customise your screenshot done with Puppeteer https://www.bannerbear.com/blog/how-to-take-screenshots-with-puppeteer/
-
-
-
-
-
-
+* StackOverflow branch on WSL/Linux errors https://stackoverflow.com/questions/66214552/tmp-chromium-error-while-loading-shared-libraries-libnss3-so-cannot-open-sha
+* Puppeteer docs https://pptr.dev/api/puppeteer.page._ 
 
