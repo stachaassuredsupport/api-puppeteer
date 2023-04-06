@@ -145,7 +145,13 @@ You might get a console error, that looks like this:
 
 This error message usually means that a graphical application or program is not running properly because the system is missing essential low-level libraries. This issue can happen more often on Windows Subsystem for Linux (WSL), which is lightweight and doesn't have a graphical environment except for WSLg. To fix it, you need to install the missing libraries before running the application again.
 
-The combined command that worked for Stacha's Ubuntu Linux: 
+The combined command that worked for Stacha's Ubuntu Linux in April 2023 
+
+Please note that you should verify the list of packages and their corresponding versions before running this command to avoid any issues with package conflicts or incompatibilities.
+
+```bash
+sudo apt install -y libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libxkbcommon0 libpango1.0-0 libasound2
+```
 
 ///command
 
@@ -197,6 +203,46 @@ If the error message does not change => the library you installed didn't have th
 ```bash
 sudo apt purge -y libnss3 && sudo apt autoremove
 ```
+
+Full list of commands that worked for Stacha's Ubuntu Linux in April 2023:
+ ` 610  apt search libnss3
+  611  sudo apt install -y libnss3
+  614  node app.js
+  615  apt search libatk-1.0
+  618  apt search libatk1.0-0
+  619  sudo apt-get install -y libatk1.0-0
+  620  node app.js
+  621  apt-get install libatk-bridge2.0-0
+  622  sudo apt-get install -y libatk-bridge2.0-0
+  623  node app.js
+  624  apt search libcups
+  625  sudo apt-get install -y libcups2
+  626  node app.js
+  627  apt search libXcomposite
+  628  sudo apt-get install -y libxcomposite1
+  629  node app.js
+  630  apt search libXdamage
+  631  sudo apt-get install -y libxdamage1
+  632  node app.js
+  633  apt search libXfixes
+  634  sudo apt-get install -y libxfixes3
+  635  node app.js
+  636  apt search libXrandr
+  637  sudo apt-get install -y libxrandr2
+  638  node app.js
+  639  apt search libgbm
+  640  sudo apt-get install -y libgbm1
+  641  node app.js
+  642  apt search libxkbcommon
+  643  sudo apt-get install -y libxkbcommon0
+  644  node app.js
+  645  apt search libpango
+  646  sudo apt-get install -y libpango1.0-0
+  647  node app.js
+  648  apt search libasound
+  649  sudo apt-get install -y libasound2
+  650  node app.js
+`
 
 
 ### Additional resourses 
