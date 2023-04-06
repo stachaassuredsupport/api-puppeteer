@@ -116,5 +116,5 @@ app.post('/google', async (req, res) => {
 // Start the server and listen on a port
 const port = 3000;
 app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
+  console.log(`Installed successfully! The server is listening on port ${port}`);
 });
