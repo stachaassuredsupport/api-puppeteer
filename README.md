@@ -32,6 +32,9 @@ Instruction how to use this code:
 3.  Go life, by pressing "Go life" button in VS code or alternatively, open the HTML file in a web browser. Or open: http://127.0.0.1:5500/index.html (make sure it is running on a different port than API, which is 3000)
 4.  The web page should display three containers, each with a unique ID: "chart-container", "square-container", and "google-container". Screenshot of what you should be able to see:
 
+![screenshot](https://raw.githubusercontent.com/stachaassuredsupport/api-puppeteer/master/browser-look-screenshot.png)
+  
+
 5.  The JavaScript code in the HTML file will use jQuery to make three Ajax requests to the API, one for each container.
 6.  Each Ajax request will use the POST method to send a request to the API server and receive a binary image response.
 7.  The binary response will be converted to a base64-encoded string and used to create an image element.
