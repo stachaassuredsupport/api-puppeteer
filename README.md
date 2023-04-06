@@ -24,19 +24,106 @@ To use the API, send a POST request to any of the three routes described above. 
 
 The mockup of the client-side app is below. Cope the HTML code below and create a separate file on your machine. Go life, by pressing "go life" button in VS code or alternatively open: http://127.0.0.1:5500/index.html
 
-  
 
-code here
 
-  
-
-### Example using curl
+### Example HTML
 
   
 
 ```bash
 
-curl -X  POST  http://localhost:3000/chart > chart.png
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Chart API Demo</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      .my-image,
+      .my-container {
+        width: 100%;
+        background-color: #bebebe;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .main {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div id="chart-container" class="my-container"></div>
+      <br><br>
+      <div id="square-container" class="my-container"></div>
+      <br><br>
+      <div id="google-container" class="my-container"></div>
+    </div>
+    <script>
+      $(document).ready(function() {
+        // Make an Ajax request to the chart API
+        $.ajax({
+          url: 'http://localhost:3000/google',
+          type: 'POST',
+          success: function(data) {
+            // Create an image element from the binary response
+            let img = new Image();
+            img.id = "chart-image";
+            img.src = 'data:image/png;base64,' + data;
+            img.classList.add("my-image");
+
+            // Append the image element to the chart container
+            $('#google-container').append(img);
+          },
+          error: function(xhr, status, error) {
+            console.error(error);
+            $('#google-container').text('Error generating chart image');
+          }
+        });
+
+        $.ajax({
+          url: 'http://localhost:3000/red-square',
+          type: 'POST',
+          success: function(data) {
+            // Create an image element from the binary response
+            let img = new Image();
+            img.id = "chart-image";
+            img.src = 'data:image/png;base64,' + data;
+            img.classList.add("my-image");
+
+            // Append the image element to the chart container
+            $('#square-container').append(img);
+          },
+          error: function(xhr, status, error) {
+            console.error(error);
+            $('#square-container').text('Error generating chart image');
+          }
+        });
+
+        $.ajax({
+          url: 'http://localhost:3000/chart',
+          type: 'POST',
+          success: function(data) {
+            // Create an image element from the binary response
+            let img = new Image();
+            img.id = "chart-image";
+            img.src = 'data:image/png;base64,' + data;
+            img.classList.add("my-image");
+
+            // Append the image element to the chart container
+            $('#chart-container').append(img);
+          },
+          error: function(xhr, status, error) {
+            console.error(error);
+            $('#chart-container').text('Error generating chart image');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+
 
 
 
