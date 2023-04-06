@@ -137,6 +137,72 @@ Note that in the JavaScript code, the URLs for the Ajax requests are hardcoded t
 </html>
 ```
 
+### Dependencies for Linux
+
+You might get a console error, that looks like this: 
+
+`error while loading shared libraries: libnss3.so: cannot open shared object file: No such file or directory`
+
+This error message usually means that a graphical application or program is not running properly because the system is missing essential low-level libraries. This issue can happen more often on Windows Subsystem for Linux (WSL), which is lightweight and doesn't have a graphical environment except for WSLg. To fix it, you need to install the missing libraries before running the application again.
+
+The combined command that worked for Stacha's Ubuntu Linux: 
+
+///command
+
+But there is the explaination, how to make it by yourself, based on the error messages you get: 
+
+To resolve this (Debian/Ubuntu example):
+
+1.  Search the package manager's packages for the one that is missing
+
+```bash
+apt search libnss3
+
+```
+
+2.  Determine a suitable candidate from the search results
+
+```yaml
+Sorting... Done
+Full Text Search... Done
+libnss3/oldstable,now 2:3.42.1-1+deb10u5 amd64
+  Network Security Service libraries
+
+libnss3-dev/oldstable 2:3.42.1-1+deb10u5 amd64
+  Development files for the Network Security Service libraries
+
+libnss3-tools/oldstable 2:3.42.1-1+deb10u5 amd64
+  Network Security Service tools
+
+nss-passwords/oldstable 0.2-2+b2 amd64
+  read passwords from a keyring
+
+```
+
+3.  Install the candidate
+
+```bash
+sudo apt install -y libnss3
+
+```
+
+4.  Run your command again (restart server and reload port/browser where HTML file was oppened)
+
+If this exact the error message goes away => success
+
+If the error message changes => repeat 1, 2, 3 steps for the new error message
+
+If the error message does not change => the library you installed didn't have the files you need, so uninstall and try a different one
+
+```bash
+sudo apt purge -y libnss3 && sudo apt autoremove
+```
+
+
+### Additional resourses 
+
+* Blog post how to customise your screenshot done with Puppeteer https://www.bannerbear.com/blog/how-to-take-screenshots-with-puppeteer/
+
 
 
 
